@@ -1,44 +1,105 @@
-# FairFund - Blockchain-based Community Funding Platform
+<!-- Don't delete it -->
+<div name="readme-top"></div>
 
-## Table of Contents
+<!-- Organization Logo -->
+<div align="center" style="display: flex; align-items: center; justify-content: center; gap: 16px;">
+  <img alt="Stability Nexus" src="public/stability.svg" width="175">
+  <img alt="FairFund Logo" src="public/todo-project-logo.svg" width="175" />
+</div>
 
-1. [Introduction](#introduction)
-2. [Technology Stack](#technology-stack)
-3. [Architecture](#architecture)
-4. [Run Locally](#run-locally)
-5. [Usage Guide](#usage-guide)
-6. [Smart Contract Documentation](#smart-contract-documentation)
-7. [Deployment](#deployment)
-8. [Future Improvements](#future-improvements)
-9. [Contributing](#contributing)
+&nbsp;
+
+<div align="center">
+
+[![Static Badge](https://img.shields.io/badge/Stability_Nexus-FairFund-228B22?style=for-the-badge&labelColor=FFC517)](https://fairfund.stability.nexus/)
+
+</div>
+
+<p align="center">
+<a href="https://t.me/StabilityNexus"><img src="https://img.shields.io/badge/Telegram-black?style=flat&logo=telegram&logoColor=white&color=24A1DE"/></a>
+&nbsp;&nbsp;
+<a href="https://x.com/StabilityNexus"><img src="https://img.shields.io/twitter/follow/StabilityNexus"/></a>
+&nbsp;&nbsp;
+<a href="https://discord.gg/7jS9qJNjJv"><img src="https://img.shields.io/discord/995968619034984528?style=flat&logo=discord&logoColor=white&label=Discord&labelColor=5865F2&color=57F287"/></a>
+&nbsp;&nbsp;
+<a href="https://news.stability.nexus/"><img src="https://img.shields.io/badge/Medium-black?style=flat&logo=medium&color=white"/></a>
+&nbsp;&nbsp;
+<a href="https://linkedin.com/company/stability-nexus"><img src="https://img.shields.io/badge/LinkedIn-black?style=flat&logo=LinkedIn&color=0A66C2"/></a>
+&nbsp;&nbsp;
+<a href="https://www.youtube.com/@StabilityNexus"><img src="https://img.shields.io/youtube/channel/subscribers/UCZOG4YhFQdlGaLugr_e5BKw?style=flat&logo=youtube&labelColor=FF0000&color=FF0000"/></a>
+</p>
+
+---
+
+<div align="center">
+<h1>FairFund – Blockchain-based Community Funding Platform</h1>
+</div>
+
+FairFund is a blockchain-based platform for community-driven funding.  
+Users can deploy funding vaults, deposit funds, vote on proposals, and distribute funds in a decentralized manner.  
+
+---
+
+# 📚 Table of Contents
+
+1. [Introduction](#introduction)  
+2. [Technology Stack](#technology-stack)  
+3. [Architecture](#architecture)  
+4. [Run Locally](#run-locally)  
+5. [Usage Guide](#usage-guide)  
+6. [Smart Contract Documentation](#smart-contract-documentation)  
+7. [Deployment](#deployment)  
+8. [Future Improvements](#future-improvements)  
+9. [Contributing](#contributing)  
 10. [Community](#community)
 
-## Introduction
+---
 
-FairFund is a blockchain based platform for community-driven funding. Users can deploy funding vaults, deposit funds, and submit proposals for funding. The platform uses a voting mechanism to decide which proposals receive how much funding.
+## 📝 Introduction
 
-## Technology Stack
+FairFund is a blockchain-based platform for community-driven funding.  
+Users can:
 
-- Frontend: Next.js, TailwindCSS, ShadCN UI
-- Backend: Next.js API Routes, Prisma ORM, NextAuth, SIWE, Web3Modal
-- Blockchain: Foundry, Solidity
-- Database: PostgreSQL
-- Other tools and libraries: Wagmi, Viem, React Hook Form
+- Deploy funding vaults  
+- Deposit and lock funds  
+- Create proposals  
+- Vote and determine fund distribution  
+- Withdraw results transparently  
 
-## Architecture
+The platform uses a decentralized voting mechanism to decide which proposals receive funding.
+
+---
+
+## 🛠 Technology Stack
+
+- **Frontend:** Next.js, TailwindCSS, ShadCN UI  
+- **Backend:** Next.js API Routes, Prisma ORM, NextAuth, SIWE, Web3Modal  
+- **Blockchain:** Foundry, Solidity  
+- **Database:** PostgreSQL  
+- **Tools:** Wagmi, Viem, React Hook Form  
+
+---
+
+## 🏗 Architecture
 
 ![fairfund 1](https://github.com/user-attachments/assets/ce0e7792-2e29-4a8a-8102-880d3974fab0)
 
-## Run Locally
+---
 
-### Prerequisites
+# 🧪 Run Locally
 
-1. **Foundry Setup**: Ensure you have Foundry installed and setup. You can follow the instructions given here: [Foundry Docs](https://getfoundry.sh/).
+## Prerequisites
 
-2. **Node.js**: Ensure you have Node.js Installed. You can follow the instructions here: [Nodejs Docs](https://nodejs.org/en/learn/getting-started/introduction-to-nodejs)
+1. **Foundry Setup**  
+   Install using: https://getfoundry.sh/
 
-3. **Docker**: Docker allows you to build, test, and deploy applications quickly by packaging software into standardized units called containers. These containers include everything the software needs to run, such as libraries, system tools, code, and runtime. To get started with Docker, follow the [official guide](https://docs.docker.com/get-started/introduction/).
+2. **Node.js Setup**  
+   Guide: https://nodejs.org/en/learn/getting-started/introduction-to-nodejs
 
+3. **Docker Setup**  
+   Guide: https://docs.docker.com/get-started/introduction/
+
+---
 ### Smart Contracts
 
 1. **Navigate to the Blockchain Directory**:
@@ -281,3 +342,7 @@ If you have questions or need clarification, please ask on [Discord](https://dis
 
 - [Stability Nexus](https://docs.stability.nexus/)
 - [AOSSIE](https://aossie.org/about)
+
+© 2025 The Stable Order
+
+
