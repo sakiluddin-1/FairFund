@@ -19,6 +19,7 @@ contract FairFundTreasuryTest is Test {
     event PayeeAdded(address account, uint256 shares);
     event PaymentReleased(address to, uint256 amount);
     event ERC20PaymentReleased(IERC20 indexed token, address to, uint256 amount);
+    event PaymentReceived(address from, uint256 amount);
 
     function setUp() public {
         DeployMockERC20 deployMockERC20 = new DeployMockERC20();
@@ -107,5 +108,80 @@ contract FairFundTreasuryTest is Test {
         vm.prank(alice);
         treasury.release(payable(alice)); // Withdraw 2.5 ETH
         assertEq(alice.balance, 7.5 ether);
+    }
+
+    function testReceivedFunctionEmitsEvent() public {
+        vm.deal(alice, 1 ether);
+        vm.prank(alice);
+        vm.deal(address(this), 1 ether);
+        vm.expectEmit(false, false, false, true);
+        emit PaymentReceived(alice, 1 ether);
+        (bool success, ) = address(treasury).call{value: 1 ether}("");
+
+        assertTrue(success);
+    }
+
+    function testGetPayeeByIndex() public {
+        address firstPayee = treasury.payee(0);
+        address secondPayee = treasury.payee(1);
+
+        assertEq(firstPayee, alice);
+        assertEq(secondPayee, bob);
+    }
+
+    function testReleasableReturnsAmount() public {
+        uint256 releasableForAlice = treasury.releasable(alice);
+
+        assertEq(releasableForAlice, 5 ether);
+    }
+
+    function testReleasableERC20ReturnsAmount() public {
+        uint256 releasableForAlice = treasury.releasable(mockToken, alice);
+
+        assertEq(releasableForAlice, 500e18);
+    }
+
+    function testRevertWhenAccountHasNoShares_ERC20() public {
+        address randomUser = address(0x3);
+        vm.expectRevert(FairFundTreasury.FairFundTreasury__AccountHasNoShares.selector);
+        treasury.release(mockToken, randomUser);
+    }
+
+    function testRevertWhenNoPaymentDue_ERC20() public {
+        vm.prank(alice);
+        treasury.release(mockToken, alice);
+
+        vm.prank(alice);
+        vm.expectRevert(FairFundTreasury.FairFundTreasury__AccountIsNotDuePayment.selector);
+        treasury.release(mockToken, alice);
+    }
+
+    function testRevertIfPayeeIsZeroAddress() public {
+        address[] memory _payees = new address[](1);
+        uint256[] memory _shares = new uint256[](1);
+        _payees[0] = address(0);
+        _shares[0] = 1;
+        vm.expectRevert(FairFundTreasury.FairFundTreasury__AccountIsTheZeroAddress.selector);
+        new FairFundTreasury(_payees, _shares);
+    }
+
+    function testRevertIfZeroShares() public {
+        address[] memory _payees = new address[](1);
+        uint256[] memory _shares = new uint256[](1);
+        _payees[0] = alice;
+        _shares[0] = 0;
+        vm.expectRevert(FairFundTreasury.FairFundTreasury__SharesAreZero.selector);
+        new FairFundTreasury(_payees, _shares);
+    }
+
+    function testRevertIfAccountAlredyHasShares() public {
+        address[] memory _payees = new address[](2);
+        uint256[] memory _shares = new uint256[](2);
+        _payees[0] = alice;
+        _payees[1] = alice;
+        _shares[0] = 1;
+        _shares[1] = 1;
+        vm.expectRevert(FairFundTreasury.FairFundTreasury__AccountAlreadyHasShares.selector);
+        new FairFundTreasury(_payees, _shares);
     }
 }
